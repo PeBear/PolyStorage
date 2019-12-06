@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 22, 2019 11:47:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="polystorage" name="com.polystorage.entity.ChiTietDonXuat" optimistic-lock="version" table="chitietdonxuat">
+    <composite-id class="com.polystorage.entity.ChiTietDonXuatId" name="id">
+      <key-property name="maDX" type="int">
+        <column name="MaDX"/>
+      </key-property>
+      <key-property name="maSP" type="string">
+        <column length="10" name="MaSP"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="com.polystorage.entity.DonXuat" fetch="select" insert="false" name="donXuat" update="false" lazy="false">
+      <column name="MaDX" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.polystorage.entity.SanPham" fetch="select" insert="false" name="sanPham" update="false" lazy="false">
+      <column length="10" name="MaSP" not-null="true"/>
+    </many-to-one>
+    <property name="soLuong" type="int">
+      <column name="SoLuong" not-null="true"/>
+    </property>
+  </class>
+</hibernate-mapping>

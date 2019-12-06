@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 22, 2019 11:47:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="polystorage" name="com.polystorage.entity.SanPham" optimistic-lock="version" table="sanpham">
+    <id name="maSp" type="string">
+      <column length="10" name="MaSP"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.polystorage.entity.LoaiSanPham" fetch="select" name="loaiSanPham" lazy="false">
+      <column length="10" name="MaLoai" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.polystorage.entity.NhaCungCap" fetch="select" name="nhaCungCap" lazy="false">
+      <column length="10" name="MaNCC" not-null="true"/>
+    </many-to-one>
+    <property name="tenSp" type="string">
+      <column length="50" name="TenSP" not-null="true"/>
+    </property>
+    <property name="donViTinh" type="string">
+      <column length="50" name="DonViTinh" not-null="true"/>
+    </property>
+    <property name="giaDv" type="float">
+      <column name="GiaDV" not-null="true" precision="12" scale="0"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="false" name="chiTietDonXuats" table="chitietdonxuat">
+      <key>
+        <column length="10" name="MaSP" not-null="true"/>
+      </key>
+      <one-to-many class="com.polystorage.entity.ChiTietDonXuat"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="chiTietKhos" table="chitietkho">
+      <key>
+        <column length="10" name="MaSP" not-null="true"/>
+      </key>
+      <one-to-many class="com.polystorage.entity.ChiTietKho"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="false" name="chiTietDonNhaps" table="chitietdonnhap">
+      <key>
+        <column length="10" name="MaSP" not-null="true"/>
+      </key>
+      <one-to-many class="com.polystorage.entity.ChiTietDonNhap"/>
+    </set>
+  </class>
+</hibernate-mapping>

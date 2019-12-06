@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 22, 2019 11:47:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="polystorage" name="com.polystorage.entity.DonXuat" optimistic-lock="version" table="donxuat">
+    <id name="maDX" type="java.lang.Integer">
+      <column name="MaDX"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.polystorage.entity.KhachHang" fetch="select" name="khachHang" lazy="false">
+      <column length="10" name="MaKH" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.polystorage.entity.Kho" fetch="select" name="kho">
+      <column length="10" name="MaKho" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="com.polystorage.entity.NhanVien" fetch="select" name="nhanVien" lazy="false">
+      <column length="10" name="MaNV" not-null="true"/>
+    </many-to-one>
+    <property name="ngayXuat" type="timestamp">
+      <column length="0" name="NgayXuat" not-null="true"/>
+    </property>
+    <property name="trangThai" type="boolean">
+      <column name="TrangThai" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="false" name="chiTietDonXuats" table="chitietdonxuat">
+      <key>
+        <column name="MaDX" not-null="true"/>
+      </key>
+      <one-to-many class="com.polystorage.entity.ChiTietDonXuat"/>
+    </set>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 22, 2019 11:47:06 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="polystorage" name="com.polystorage.entity.NhaCungCap" optimistic-lock="version" table="nhacungcap">
+    <id name="maNCC" type="string">
+      <column length="10" name="MaNCC"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="tenNCC" type="string">
+      <column length="50" name="TenNCC" not-null="true"/>
+    </property>
+    <property name="email" type="string">
+      <column length="50" name="Email" not-null="true"/>
+    </property>
+    <property name="sdt" type="string">
+      <column length="10" name="SDT" not-null="true"/>
+    </property>
+    <property name="diaChi" type="string">
+      <column name="DiaChi" not-null="true"/>
+    </property>
+    <property name="ghiChu" type="string">
+      <column name="GhiChu"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="sanPhams" table="sanpham">
+      <key>
+        <column length="10" name="MaNCC" not-null="true"/>
+      </key>
+      <one-to-many class="com.polystorage.entity.SanPham"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="donNhaps" table="donnhap">
+      <key>
+        <column length="10" name="MaNCC" not-null="true"/>
+      </key>
+      <one-to-many class="com.polystorage.entity.DonNhap"/>
+    </set>
+  </class>
+</hibernate-mapping>
