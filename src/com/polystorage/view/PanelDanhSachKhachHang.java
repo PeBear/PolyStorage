@@ -51,9 +51,9 @@ public class PanelDanhSachKhachHang extends javax.swing.JPanel {
 
         pnlControl = new javax.swing.JPanel();
         txtTimKiem = new javax.swing.JTextField();
-        btnThemNhanVien = new javax.swing.JLabel();
         pnlTitle = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
+        btnThemNhanVien = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDoiTac = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
@@ -67,16 +67,6 @@ public class PanelDanhSachKhachHang extends javax.swing.JPanel {
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
-            }
-        });
-
-        btnThemNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/button_them-nhan-vien.png"))); // NOI18N
-        btnThemNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnThemNhanVienMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnThemNhanVienMouseExited(evt);
             }
         });
 
@@ -99,6 +89,13 @@ public class PanelDanhSachKhachHang extends javax.swing.JPanel {
             .addComponent(lblTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
         );
 
+        btnThemNhanVien.setText("Thêm Mới");
+        btnThemNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemNhanVienActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlControlLayout = new javax.swing.GroupLayout(pnlControl);
         pnlControl.setLayout(pnlControlLayout);
         pnlControlLayout.setHorizontalGroup(
@@ -114,7 +111,7 @@ public class PanelDanhSachKhachHang extends javax.swing.JPanel {
         pnlControlLayout.setVerticalGroup(
             pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(pnlControlLayout.createSequentialGroup()
-                .addGroup(pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnThemNhanVien))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -182,23 +179,18 @@ public class PanelDanhSachKhachHang extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnThemNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemNhanVienMouseExited
-        btnThemNhanVien.setIcon(new ImageIcon(getClass().getResource("/icon/button_them-nhan-vien.png")));
-    }//GEN-LAST:event_btnThemNhanVienMouseExited
-
-    private void btnThemNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemNhanVienMouseEntered
-        btnThemNhanVien.setIcon(new ImageIcon(getClass().getResource("/icon/button_them-nhan-vien(1).png")));
-        btnThemNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_btnThemNhanVienMouseEntered
-
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         String hoTen = txtTimKiem.getText();
         this.fillToTable(hoTen);
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
+    private void btnThemNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNhanVienActionPerformed
+        new FrameThemKhachHang(null).setVisible(true);
+    }//GEN-LAST:event_btnThemNhanVienActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnThemNhanVien;
+    private javax.swing.JButton btnThemNhanVien;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;

@@ -4,6 +4,7 @@ import com.polystorage.dao.DonNhapDAOImpl;
 import com.polystorage.entity.DonNhap;
 import com.polystorage.helper.DialogHelper;
 import com.polystorage.helper.ExportPDF;
+import com.polystorage.helper.ProcessString;
 import com.polystorage.helper.RemoveButton;
 import java.awt.Color;
 import java.awt.Font;
@@ -11,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -51,7 +53,7 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
 
         pnlControl = new javax.swing.JPanel();
         btnThemMoi = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnXuatPDF = new javax.swing.JButton();
         txtNgayMin = new com.toedter.calendar.JDateChooser();
         txtNgayMax = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
@@ -61,6 +63,8 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblDonNhap = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        lblTongHoaDon = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -73,10 +77,10 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Xuất PDF");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnXuatPDF.setText("Xuất PDF");
+        btnXuatPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnXuatPDFActionPerformed(evt);
             }
         });
 
@@ -116,7 +120,7 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNgayMax, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnXuatPDF)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThemMoi)
                 .addContainerGap())
@@ -133,7 +137,7 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
                             .addGap(9, 9, 9)
                             .addGroup(pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnThemMoi)
-                                .addComponent(jButton1)))
+                                .addComponent(btnXuatPDF)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlControlLayout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(txtNgayMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -191,20 +195,35 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
                 .addGap(0, 0, 0)
                 .addComponent(lblTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 255));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLabel3.setText("Tổng Hóa Đơn:");
+
+        lblTongHoaDon.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTongHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 34, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lblTongHoaDon))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -240,7 +259,7 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
         new FrameThemDonNhap(null).setVisible(true);
     }//GEN-LAST:event_btnThemMoiActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnXuatPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatPDFActionPerformed
         int index = tblDonNhap.getSelectedRow();
         if (index == -1) {
             DialogHelper.showMessageDialog(null, "Vui lòng chọn hóa đơn cần xuất pdf");
@@ -248,12 +267,22 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
             int maDN = (int) tblDonNhap.getValueAt(index, 0);
             int ok = JOptionPane.showConfirmDialog(null, "Xác nhận xuất pdf hóa đơn " + maDN, "Bạn muốn xuấts?", JOptionPane.YES_NO_OPTION);
             if (ok == 0) {
-                ExportPDF exportPDF = new ExportPDF();
-                exportPDF.exportDonNhap(donNhapDAOImpl.getInfoDonNhap(2));
+                JFileChooser jfc = new JFileChooser();
+                jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+                if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    String path = jfc.getSelectedFile().getAbsolutePath();
+                    if (!path.endsWith(".pdf")) {
+                        path += ".pdf";
+                    }
+                    ExportPDF exportPDF = new ExportPDF();
+                    exportPDF.FILE = path;
+                    exportPDF.exportDonNhap(donNhapDAOImpl.getInfoDonNhap(2));
+                }
+
             }
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnXuatPDFActionPerformed
 
     private void txtNgayMinPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtNgayMinPropertyChange
         this.fillToTableDonHang(txtNgayMin.getDate(), txtNgayMax.getDate());
@@ -266,12 +295,14 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnThemMoi;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnXuatPDF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblTongHoaDon;
     private javax.swing.JPanel pnlControl;
     private javax.swing.JPanel pnlRoot;
     private javax.swing.JTable tblDonNhap;
@@ -304,17 +335,21 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
             };
             tblDonNhap.getColumnModel().getColumn(6).setCellRenderer(new RemoveButton(tblDonNhap, 6, actionListener));
             model.setRowCount(0);
+            double sum = 0;
             for (DonNhap x : list) {
-                String tongGia = donNhapDAOImpl.getTongDonNhap(x.getMaDN()) + " VNĐ";
+                double tongGia = donNhapDAOImpl.getTongDonNhap(x.getMaDN());
+                String tongDon = ProcessString.toVietnamMoney(tongGia) + " VNĐ";
+                sum += tongGia;
                 String trangThai = "";
                 if (x.isTrangThai()) {
                     trangThai = "Đã xác nhận";
                 } else {
                     trangThai = "Đang chờ";
                 }
-                Object[] row = new Object[]{x.getMaDN(), x.getNgayNhap(), x.getNhaCungCap().getTenNCC(), x.getNhanvien().getMaNv(), trangThai, tongGia};
+                Object[] row = new Object[]{x.getMaDN(), x.getNgayNhap(), x.getNhaCungCap().getTenNCC(), x.getNhanvien().getMaNv(), trangThai, tongDon};
                 model.addRow(row);
             }
+            lblTongHoaDon.setText(ProcessString.toVietnamMoney(sum));
         }
     }
 
@@ -330,17 +365,21 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
             };
             tblDonNhap.getColumnModel().getColumn(6).setCellRenderer(new RemoveButton(tblDonNhap, 6, actionListener));
             model.setRowCount(0);
+            double sum = 0;
             for (DonNhap x : list) {
-                String tongGia = donNhapDAOImpl.getTongDonNhap(x.getMaDN()) + " VNĐ";
+                double tongGia = donNhapDAOImpl.getTongDonNhap(x.getMaDN());
+                String tongDon = ProcessString.toVietnamMoney(tongGia);
+                sum += tongGia;
                 String trangThai = "";
                 if (x.isTrangThai()) {
                     trangThai = "Đã xác nhận";
                 } else {
                     trangThai = "Đang chờ";
                 }
-                Object[] row = new Object[]{x.getMaDN(), x.getNgayNhap(), x.getNhaCungCap().getTenNCC(), x.getNhanvien().getMaNv(), trangThai, tongGia};
+                Object[] row = new Object[]{x.getMaDN(), x.getNgayNhap(), x.getNhaCungCap().getTenNCC(), x.getNhanvien().getMaNv(), trangThai, tongDon};
                 model.addRow(row);
             }
+            lblTongHoaDon.setText(ProcessString.toVietnamMoney(sum));
         }
     }
 

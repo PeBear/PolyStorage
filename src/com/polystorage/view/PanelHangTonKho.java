@@ -48,7 +48,6 @@ public class PanelHangTonKho extends javax.swing.JPanel {
     private void initComponents() {
 
         pnlControl = new javax.swing.JPanel();
-        btnThemNhanVien = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         cboMaKho = new javax.swing.JComboBox<>();
         pnlRoot = new javax.swing.JPanel();
@@ -60,16 +59,6 @@ public class PanelHangTonKho extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         pnlControl.setBackground(new java.awt.Color(255, 255, 255));
-
-        btnThemNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/button(4).png"))); // NOI18N
-        btnThemNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnThemNhanVienMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnThemNhanVienMouseExited(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         jLabel1.setText("Kho:");
@@ -90,20 +79,16 @@ public class PanelHangTonKho extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cboMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnThemNhanVien)
-                .addContainerGap())
+                .addContainerGap(490, Short.MAX_VALUE))
         );
         pnlControlLayout.setVerticalGroup(
             pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlControlLayout.createSequentialGroup()
                 .addGap(4, 4, 4)
-                .addGroup(pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(cboMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnThemNhanVien))
-                .addGap(12, 12, 12))
+                .addGroup(pnlControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(cboMaKho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28))
         );
 
         pnlRoot.setBackground(new java.awt.Color(35, 124, 196));
@@ -193,15 +178,6 @@ public class PanelHangTonKho extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnThemNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemNhanVienMouseExited
-        btnThemNhanVien.setIcon(new ImageIcon(getClass().getResource("/icon/button_them_moi.png")));
-    }//GEN-LAST:event_btnThemNhanVienMouseExited
-
-    private void btnThemNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemNhanVienMouseEntered
-        btnThemNhanVien.setIcon(new ImageIcon(getClass().getResource("/icon/button_them_moi(2).png")));
-        btnThemNhanVien.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_btnThemNhanVienMouseEntered
-
     private void tblTonKhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTonKhoMouseClicked
 
     }//GEN-LAST:event_tblTonKhoMouseClicked
@@ -213,7 +189,6 @@ public class PanelHangTonKho extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnThemNhanVien;
     private javax.swing.JComboBox<String> cboMaKho;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;

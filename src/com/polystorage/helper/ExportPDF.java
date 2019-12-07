@@ -8,7 +8,6 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Section;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -26,14 +25,13 @@ import java.io.File;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 public class ExportPDF {
 
-    private static String FILE = "F:/temp/FirstPdf.pdf";
+    public String FILE;
     private static Font arialNormal;
     private static Font arialBold;
     private static Font arialItalic;
@@ -52,31 +50,29 @@ public class ExportPDF {
 
     }
 
-    public static void main(String[] args) {
-        try {
-
-            File file = new File(FILE);
-            file.delete();
-            if (file.createNewFile()) {
-                System.out.println("create file");
-            }
-
-            Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(FILE));
-            document.open();
-            //addMetaData(document);
-            //addTitlePage(document);
-            //addContent(document);
-            document.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+//    public static void main(String[] args) {
+//        try {
+//
+//            File file = new File(FILE);
+//            file.delete();
+//            if (file.createNewFile()) {
+//                System.out.println("create file");
+//            }
+//
+//            Document document = new Document();
+//            PdfWriter.getInstance(document, new FileOutputStream(FILE));
+//            document.open();
+//            //addMetaData(document);
+//            //addTitlePage(document);
+//            //addContent(document);
+//            document.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
     public void exportDonNhap(DonNhap donNhap) {
         try {
             File file = new File(FILE);
-            file.delete();
             if (file.createNewFile()) {
                 System.out.println("create file");
             }
@@ -94,7 +90,6 @@ public class ExportPDF {
     public void exportDonXuat(DonXuat donXuat) {
         try {
             File file = new File(FILE);
-            file.delete();
             if (file.createNewFile()) {
                 System.out.println("create file");
             }
@@ -126,14 +121,14 @@ public class ExportPDF {
         title.setAlignment(Element.ALIGN_CENTER);
         addEmptyLine(title, 1);
         title.add(new Paragraph("PHIẾU NHẬP KHO", arialBold));
-        
+
         //get day month year
         Date ngayNhap = donNhap.getNgayNhap();
         LocalDate localDate = ngayNhap.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         int year = localDate.getYear();
         int month = localDate.getMonthValue();
         int day = localDate.getDayOfMonth();
-        
+
         title.add(new Paragraph("Ngày " + day + " tháng " + month + " năm " + year, arialNormal));
         title.add(new Paragraph("Số đơn: " + donNhap.getMaDN(), arialNormal));
         addEmptyLine(title, 1);
@@ -153,7 +148,7 @@ public class ExportPDF {
 
         Paragraph footer = new Paragraph();
 
-        footer.add(new Paragraph("Tổng số tiền:" + new DonNhapDAOImpl().getTongDonNhap(donNhap.getMaDN()), arialBold));
+        footer.add(new Paragraph("Tổng số tiền:" + ProcessString.toVietnamMoney(new DonNhapDAOImpl().getTongDonNhap(donNhap.getMaDN())) + " VNĐ", arialBold));
 
         document.add(title);
         document.add(content);
@@ -174,7 +169,7 @@ public class ExportPDF {
         int year = localDate.getYear();
         int month = localDate.getMonthValue();
         int day = localDate.getDayOfMonth();
-        
+
         title.add(new Paragraph("Ngày " + day + " tháng " + month + " năm " + year, arialNormal));
         title.add(new Paragraph("Số đơn: " + donXuat.getMaDX(), arialNormal));
         addEmptyLine(title, 1);
@@ -194,7 +189,7 @@ public class ExportPDF {
 
         Paragraph footer = new Paragraph();
 
-        footer.add(new Paragraph("Tổng số tiền:" + new DonXuatDAOImpl().getTongDonXuat(donXuat.getMaDX()), arialBold));
+        footer.add(new Paragraph("Tổng số tiền:" + ProcessString.toVietnamMoney(new DonXuatDAOImpl().getTongDonXuat(donXuat.getMaDX())) + " VNĐ", arialBold));
 
         document.add(title);
         document.add(content);

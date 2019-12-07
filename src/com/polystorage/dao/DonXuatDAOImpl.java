@@ -52,17 +52,17 @@ public class DonXuatDAOImpl implements DonXuatDAO {
         return nextId;
     }
 
-    public String getTongDonXuat(int maDX) {
+    public double getTongDonXuat(int maDX) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         String sql = "CALL spGetTongDonXuat(" + maDX + ")";
         Query query = session.createSQLQuery(sql);
         List<Double> list = query.list();
-        if (list.size() != 0) {
-            return ProcessString.toVietnamMoney(list.get(0));
+        if (list.size() == 0) {
+            return 0;
         }
         session.close();
-        return "0";
+        return list.get(0);
     }
 
     @Override

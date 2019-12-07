@@ -51,12 +51,12 @@ public class NewMain {
 
             }
         }
-        JFrame jf = new JFrame();
-        jf.add(new PanelTongSanPhamNhapXuat(true));
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.setSize(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize());
-        jf.setVisible(true);
-        
+//        JFrame jf = new JFrame();
+//        jf.add(new PanelTongSanPhamNhapXuat(true));
+//        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        jf.setSize(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize());
+//        jf.setVisible(true);
+        System.out.printf("%s %15d","hello",555);
     }
 
 }
