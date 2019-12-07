@@ -6,9 +6,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class LoaiSanPhamDAOImpl implements LoaiSanPhamDAO {
+public class LoaiSanPhamDAOImpl {
 
-    @Override
     public List<LoaiSanPham> getListLoai(String loai) {
         List<LoaiSanPham> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -23,7 +22,6 @@ public class LoaiSanPhamDAOImpl implements LoaiSanPhamDAO {
         return list;
     }
 
-    @Override
     public LoaiSanPham getInfoLoai(String maLoai) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -32,7 +30,6 @@ public class LoaiSanPhamDAOImpl implements LoaiSanPhamDAO {
         return loai;
     }
 
-    @Override
     public boolean insertLoai(LoaiSanPham loai) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -49,7 +46,6 @@ public class LoaiSanPhamDAOImpl implements LoaiSanPhamDAO {
         }
     }
 
-    @Override
     public boolean updateLoai(LoaiSanPham loai) {
         if (getInfoLoai(loai.getMaLoai()) == null) {
             return false;
@@ -69,7 +65,6 @@ public class LoaiSanPhamDAOImpl implements LoaiSanPhamDAO {
         }
     }
 
-    @Override
     public boolean deleteLoai(String maLoai) {
         LoaiSanPham loai = getInfoLoai(maLoai);
         Session session = HibernateUtil.getSessionFactory().openSession();

@@ -1,17 +1,14 @@
 package com.polystorage.dao;
 
 import com.polystorage.entity.DonNhap;
-import com.polystorage.helper.ProcessString;
 import com.polystorage.util.HibernateUtil;
-import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class DonNhapDAOImpl implements DonNhapDAO {
+public class DonNhapDAOImpl {
 
-    @Override
     public List<DonNhap> getListDonNhap(int maDN) {
         List<DonNhap> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -64,7 +61,6 @@ public class DonNhapDAOImpl implements DonNhapDAO {
         return list.get(0);
     }
 
-    @Override
     public DonNhap getInfoDonNhap(int maDN) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -73,7 +69,6 @@ public class DonNhapDAOImpl implements DonNhapDAO {
         return donHang;
     }
 
-    @Override
     public boolean insertDonNhap(DonNhap dn) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -90,7 +85,6 @@ public class DonNhapDAOImpl implements DonNhapDAO {
         }
     }
 
-    @Override
     public boolean updateDonNhap(DonNhap dn) {
         if (getInfoDonNhap(dn.getMaDN()) == null) {
             return false;
@@ -110,7 +104,6 @@ public class DonNhapDAOImpl implements DonNhapDAO {
         }
     }
 
-    @Override
     public boolean deleteDonNhap(int maDH) {
         DonNhap donNhap = getInfoDonNhap(maDH);
         Session session = HibernateUtil.getSessionFactory().openSession();

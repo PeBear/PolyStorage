@@ -1,18 +1,14 @@
 package com.polystorage.dao;
 
-import com.polystorage.entity.DonNhap;
 import com.polystorage.entity.DonXuat;
-import com.polystorage.helper.ProcessString;
 import com.polystorage.util.HibernateUtil;
-import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class DonXuatDAOImpl implements DonXuatDAO {
+public class DonXuatDAOImpl{
 
-    @Override
     public List<DonXuat> getListDonXuat(int maDX) {
         List<DonXuat> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -65,7 +61,6 @@ public class DonXuatDAOImpl implements DonXuatDAO {
         return list.get(0);
     }
 
-    @Override
     public DonXuat getInfoDonXuat(int maDX) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -74,7 +69,6 @@ public class DonXuatDAOImpl implements DonXuatDAO {
         return donHang;
     }
 
-    @Override
     public boolean insertDonXuat(DonXuat dx) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -91,7 +85,6 @@ public class DonXuatDAOImpl implements DonXuatDAO {
         }
     }
 
-    @Override
     public boolean updateDonXuat(DonXuat dx) {
         if (getInfoDonXuat(dx.getMaDX()) == null) {
             return false;
@@ -111,7 +104,6 @@ public class DonXuatDAOImpl implements DonXuatDAO {
         }
     }
 
-    @Override
     public boolean deleteDonXuat(int maDX) {
         DonXuat donXuat = getInfoDonXuat(maDX);
         Session session = HibernateUtil.getSessionFactory().openSession();

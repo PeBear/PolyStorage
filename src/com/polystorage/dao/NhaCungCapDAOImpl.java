@@ -6,9 +6,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class NhaCungCapDAOImpl implements NhaCungCapDAO {
+public class NhaCungCapDAOImpl {
 
-    @Override
     public List<NhaCungCap> getListNhaCungCap(String tenNhaCungCap) {
         List<NhaCungCap> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -23,7 +22,6 @@ public class NhaCungCapDAOImpl implements NhaCungCapDAO {
         return list;
     }
 
-    @Override
     public NhaCungCap getInfoNhaCungCap(String maNCC) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -32,7 +30,6 @@ public class NhaCungCapDAOImpl implements NhaCungCapDAO {
         return nhaCungCap;
     }
 
-    @Override
     public boolean insertNhaCungCap(NhaCungCap nhaCungCap) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -49,7 +46,6 @@ public class NhaCungCapDAOImpl implements NhaCungCapDAO {
         }
     }
 
-    @Override
     public boolean updateNhaCungCap(NhaCungCap nhaCungCap) {
         if (getInfoNhaCungCap(nhaCungCap.getMaNCC()) == null) {
             return false;
@@ -69,7 +65,6 @@ public class NhaCungCapDAOImpl implements NhaCungCapDAO {
         }
     }
 
-    @Override
     public boolean deleteNhaCungCap(String maNCC) {
         NhaCungCap nhaCungCap = getInfoNhaCungCap(maNCC);
         Session session = HibernateUtil.getSessionFactory().openSession();

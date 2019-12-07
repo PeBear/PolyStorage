@@ -6,9 +6,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class NhanVienDAOImpl implements NhanVienDAO {
+public class NhanVienDAOImpl {
 
-    @Override
     public List<NhanVien> getListNhanVien(String hoten) {
         List<NhanVien> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -23,7 +22,6 @@ public class NhanVienDAOImpl implements NhanVienDAO {
         return list;
     }
 
-    @Override
     public NhanVien getInfoNhanVien(String manv) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -32,7 +30,6 @@ public class NhanVienDAOImpl implements NhanVienDAO {
         return nv;
     }
 
-    @Override
     public boolean insertNhanVien(NhanVien nv) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -49,7 +46,6 @@ public class NhanVienDAOImpl implements NhanVienDAO {
         }
     }
 
-    @Override
     public boolean updateNhanVien(NhanVien nv) {
         if (getInfoNhanVien(nv.getMaNv()) == null) {
             return false;
@@ -69,7 +65,6 @@ public class NhanVienDAOImpl implements NhanVienDAO {
         }
     }
 
-    @Override
     public boolean deleteNhanVien(String manv) {
         NhanVien nv = getInfoNhanVien(manv);
         Session session = HibernateUtil.getSessionFactory().openSession();

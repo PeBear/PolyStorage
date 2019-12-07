@@ -6,24 +6,22 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class SanPhamDAOImpl implements SanPhamDAO {
+public class SanPhamDAOImpl {
 
-    @Override
     public List<SanPham> getListSanPham(String tensp) {
         List<SanPham> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         String sql = "FROM SanPham";
-//        if (tensp != null) {
-//            sql += " where SanPham like '" + tensp + "%'";
-//        }
+        if (tensp != null) {
+            sql += " where SanPham like '" + tensp + "%'";
+        }
         Query query = session.createQuery(sql);
         list = query.list();
         session.close();
         return list;
     }
 
-    @Override
     public SanPham getInfoSanPham(String masp) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -32,7 +30,6 @@ public class SanPhamDAOImpl implements SanPhamDAO {
         return nv;
     }
 
-    @Override
     public boolean insertSanPham(SanPham sp) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -49,7 +46,6 @@ public class SanPhamDAOImpl implements SanPhamDAO {
         }
     }
 
-    @Override
     public boolean updateSanPham(SanPham sp) {
         if (getInfoSanPham(sp.getMaSp()) == null) {
             return false;
@@ -69,7 +65,6 @@ public class SanPhamDAOImpl implements SanPhamDAO {
         }
     }
 
-    @Override
     public boolean deleteSanPham(String masp) {
         SanPham sp = this.getInfoSanPham(masp);
         Session session = HibernateUtil.getSessionFactory().openSession();

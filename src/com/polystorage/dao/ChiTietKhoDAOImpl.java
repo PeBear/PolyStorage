@@ -16,9 +16,8 @@ import org.hibernate.Session;
  *
  * @author xpeter
  */
-public class ChiTietKhoDAOImpl implements ChiTietKhoDAO {
+public class ChiTietKhoDAOImpl{
 
-    @Override
     public List<ChiTietKho> getListChiTietKho(String maKho) {
         List<ChiTietKho> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -33,7 +32,6 @@ public class ChiTietKhoDAOImpl implements ChiTietKhoDAO {
         return list;
     }
 
-    @Override
     public ChiTietKho getInfoChiTietKho(ChiTietKhoId chiTietKhoId) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -42,7 +40,6 @@ public class ChiTietKhoDAOImpl implements ChiTietKhoDAO {
         return chiTietKho;
     }
 
-    @Override
     public boolean insertChiTietKho(ChiTietKho chiTietKho) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -59,7 +56,6 @@ public class ChiTietKhoDAOImpl implements ChiTietKhoDAO {
         }
     }
 
-    @Override
     public boolean updateChiTietKho(ChiTietKho chiTietKho) {
         if (getInfoChiTietKho(chiTietKho.getId()) == null) {
             return false;
@@ -79,7 +75,6 @@ public class ChiTietKhoDAOImpl implements ChiTietKhoDAO {
         }
     }
 
-    @Override
     public boolean deleteChiTietKho(ChiTietKhoId chiTietKhoId) {
         ChiTietKho chiTietKho = getInfoChiTietKho(chiTietKhoId);
         Session session = HibernateUtil.getSessionFactory().openSession();

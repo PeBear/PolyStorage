@@ -6,9 +6,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class KhoDAOImpl implements KhoDAO {
+public class KhoDAOImpl{
 
-    @Override
     public List<Kho> getListKho() {
         List<Kho> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -20,7 +19,6 @@ public class KhoDAOImpl implements KhoDAO {
         return list;
     }
 
-    @Override
     public Kho getInfoKho(String maKho) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -29,7 +27,6 @@ public class KhoDAOImpl implements KhoDAO {
         return kho;
     }
 
-    @Override
     public boolean insertKho(Kho kho) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -46,7 +43,6 @@ public class KhoDAOImpl implements KhoDAO {
         }
     }
 
-    @Override
     public boolean updateKho(Kho kho) {
         if (getInfoKho(kho.getMaKho()) == null) {
             return false;
@@ -66,7 +62,6 @@ public class KhoDAOImpl implements KhoDAO {
         }
     }
 
-    @Override
     public boolean deleteKho(String maKho) {
         Kho kho = getInfoKho(maKho);
         Session session = HibernateUtil.getSessionFactory().openSession();

@@ -7,9 +7,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class ChiTietDonXuatDAOImpl implements ChiTietDonXuatDAO {
+public class ChiTietDonXuatDAOImpl{
 
-    @Override
     public List<ChiTietDonXuat> getListChiTietDonXuat(int maDX) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -20,7 +19,6 @@ public class ChiTietDonXuatDAOImpl implements ChiTietDonXuatDAO {
         return list;
     }
 
-    @Override
     public ChiTietDonXuat getInfoChiTietDonXuat(ChiTietDonXuatId chiTietDonHangId) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -29,7 +27,6 @@ public class ChiTietDonXuatDAOImpl implements ChiTietDonXuatDAO {
         return chiTietDonNhap;
     }
 
-    @Override
     public boolean insertChiTietDonXuat(ChiTietDonXuat chiTietDonXuat) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -46,7 +43,6 @@ public class ChiTietDonXuatDAOImpl implements ChiTietDonXuatDAO {
         }
     }
 
-    @Override
     public boolean updateChiTietDonXuat(ChiTietDonXuat chiTietDonXuat) {
         if (getInfoChiTietDonXuat(chiTietDonXuat.getId()) == null) {
             return false;
@@ -66,7 +62,6 @@ public class ChiTietDonXuatDAOImpl implements ChiTietDonXuatDAO {
         }
     }
 
-    @Override
     public boolean deleteChiTietDonXuat(int maDX) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {

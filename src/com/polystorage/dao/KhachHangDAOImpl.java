@@ -1,15 +1,13 @@
 package com.polystorage.dao;
 
 import com.polystorage.entity.KhachHang;
-import com.polystorage.entity.NhaCungCap;
 import com.polystorage.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class KhachHangDAOImpl implements KhachHangDAO {
+public class KhachHangDAOImpl {
 
-    @Override
     public List<KhachHang> getListKhachHang(String tenKhachHang) {
         List<KhachHang> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -24,7 +22,6 @@ public class KhachHangDAOImpl implements KhachHangDAO {
         return list;
     }
 
-    @Override
     public KhachHang getInfoKhachHang(String maKH) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
@@ -33,7 +30,6 @@ public class KhachHangDAOImpl implements KhachHangDAO {
         return khachHang;
     }
 
-    @Override
     public boolean insertKhachHang(KhachHang khachHang) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -50,7 +46,6 @@ public class KhachHangDAOImpl implements KhachHangDAO {
         }
     }
 
-    @Override
     public boolean updateKhachHang(KhachHang khachHang) {
         if (getInfoKhachHang(khachHang.getMaKH()) == null) {
             return false;
@@ -70,7 +65,6 @@ public class KhachHangDAOImpl implements KhachHangDAO {
         }
     }
 
-    @Override
     public boolean deleteKhachHang(String maKH) {
         KhachHang khachHang = getInfoKhachHang(maKH);
         Session session = HibernateUtil.getSessionFactory().openSession();
