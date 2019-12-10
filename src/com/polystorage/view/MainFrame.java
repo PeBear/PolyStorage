@@ -6,6 +6,7 @@
 package com.polystorage.view;
 
 import com.polystorage.entity.NhanVien;
+import com.polystorage.helper.DialogHelper;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -396,7 +397,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSanPhamMouseClicked
 
     private void btnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseClicked
-        reloadRootPanel(new PanelDanhSachNhanVien(isNhanVien));
+        if (isNhanVien){
+            DialogHelper.showMessageDialog(null, "Bạn không có quyền truy cập");
+        } else {
+            reloadRootPanel(new PanelDanhSachNhanVien(isNhanVien));
+        }
     }//GEN-LAST:event_btnNhanVienMouseClicked
 
     private void btnDonXuatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDonXuatMouseClicked
