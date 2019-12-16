@@ -1,6 +1,6 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.SanPhamDAOImpl;
+import com.polystorage.dao.SanPhamDAO;
 import com.polystorage.entity.SanPham;
 import com.polystorage.helper.DialogHelper;
 import com.polystorage.helper.RemoveButton;
@@ -222,7 +222,7 @@ public class PanelDanhSachSanPham extends javax.swing.JPanel {
     JButton btnUpdate = new JButton();
     List<SanPham> listSP;
     int indexSP = 0;
-    SanPhamDAOImpl sanPhamDAOImpl = new SanPhamDAOImpl();
+    SanPhamDAO sanPhamDAOImpl = new SanPhamDAO();
 
     private void setTableUI() {
         tblSanPham.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 15));

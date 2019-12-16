@@ -1,37 +1,40 @@
 package com.polystorage.dao;
 
-import com.polystorage.entity.ChiTietDonXuat;
-import com.polystorage.entity.ChiTietDonXuatId;
+import com.polystorage.entity.NhanVien;
 import com.polystorage.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class ChiTietDonXuatDAOImpl{
+public class NhanVienDAO {
 
-    public List<ChiTietDonXuat> getListChiTietDonXuat(int maDX) {
+    public List<NhanVien> getListNhanVien(String hoten) {
+        List<NhanVien> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        String sql = "FROM ChiTietDonXuat WHERE MaDX = '" + maDX + "'";
+        String sql = "from NhanVien";
+        if (hoten != null) {
+            sql += " where HoTen like '" + hoten + "%'";
+        }
         Query query = session.createQuery(sql);
-        List<ChiTietDonXuat> list = query.list();
+        list = query.list();
         session.close();
         return list;
     }
 
-    public ChiTietDonXuat getInfoChiTietDonXuat(ChiTietDonXuatId chiTietDonHangId) {
+    public NhanVien getInfoNhanVien(String manv) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        ChiTietDonXuat chiTietDonNhap = (ChiTietDonXuat) session.get(ChiTietDonXuat.class, chiTietDonHangId);
+        NhanVien nv = (NhanVien) session.get(NhanVien.class, manv);
         session.close();
-        return chiTietDonNhap;
+        return nv;
     }
 
-    public boolean insertChiTietDonXuat(ChiTietDonXuat chiTietDonXuat) {
+    public boolean insertNhanVien(NhanVien nv) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.save(chiTietDonXuat);
+            session.save(nv);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -43,14 +46,14 @@ public class ChiTietDonXuatDAOImpl{
         }
     }
 
-    public boolean updateChiTietDonXuat(ChiTietDonXuat chiTietDonXuat) {
-        if (getInfoChiTietDonXuat(chiTietDonXuat.getId()) == null) {
+    public boolean updateNhanVien(NhanVien nv) {
+        if (getInfoNhanVien(nv.getMaNv()) == null) {
             return false;
         }
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.update(chiTietDonXuat);
+            session.update(nv);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -62,20 +65,14 @@ public class ChiTietDonXuatDAOImpl{
         }
     }
 
-    public boolean deleteChiTietDonXuat(int maDX) {
+    public boolean deleteNhanVien(String manv) {
+        NhanVien nv = getInfoNhanVien(manv);
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            Query query = session.createQuery("DELETE FROM ChiTietDonXuat where maDX = :maDX");
-            query.setParameter("maDX", maDX);
-            if (query.executeUpdate() > 0) {
-                session.getTransaction().commit();
-                return true;
-            } else {
-                session.getTransaction().commit();
-                return false;
-            }
-
+            session.delete(nv);
+            session.getTransaction().commit();
+            return true;
         } catch (Exception e) {
             session.getTransaction().rollback();
             e.printStackTrace();
@@ -84,5 +81,4 @@ public class ChiTietDonXuatDAOImpl{
             session.close();
         }
     }
-
 }

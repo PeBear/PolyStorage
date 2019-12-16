@@ -12,8 +12,8 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.polystorage.dao.DonNhapDAOImpl;
-import com.polystorage.dao.DonXuatDAOImpl;
+import com.polystorage.dao.DonNhapDAO;
+import com.polystorage.dao.DonXuatDAO;
 import com.polystorage.entity.ChiTietDonNhap;
 import com.polystorage.entity.ChiTietDonXuat;
 import com.polystorage.entity.DonNhap;
@@ -148,7 +148,7 @@ public class ExportPDF {
 
         Paragraph footer = new Paragraph();
 
-        footer.add(new Paragraph("Tổng số tiền:" + ProcessString.toVietnamMoney(new DonNhapDAOImpl().getTongDonNhap(donNhap.getMaDN())) + " VNĐ", arialBold));
+        footer.add(new Paragraph("Tổng số tiền:" + ProcessString.toVietnamMoney(new DonNhapDAO().getTongDonNhap(donNhap.getMaDN())) + " VNĐ", arialBold));
 
         document.add(title);
         document.add(content);
@@ -189,7 +189,7 @@ public class ExportPDF {
 
         Paragraph footer = new Paragraph();
 
-        footer.add(new Paragraph("Tổng số tiền:" + ProcessString.toVietnamMoney(new DonXuatDAOImpl().getTongDonXuat(donXuat.getMaDX())) + " VNĐ", arialBold));
+        footer.add(new Paragraph("Tổng số tiền:" + ProcessString.toVietnamMoney(new DonXuatDAO().getTongDonXuat(donXuat.getMaDX())) + " VNĐ", arialBold));
 
         document.add(title);
         document.add(content);

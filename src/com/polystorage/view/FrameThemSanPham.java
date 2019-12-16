@@ -1,8 +1,8 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.LoaiSanPhamDAOImpl;
-import com.polystorage.dao.NhaCungCapDAOImpl;
-import com.polystorage.dao.SanPhamDAOImpl;
+import com.polystorage.dao.LoaiSanPhamDAO;
+import com.polystorage.dao.NhaCungCapDAO;
+import com.polystorage.dao.SanPhamDAO;
 import com.polystorage.entity.LoaiSanPham;
 import com.polystorage.entity.NhaCungCap;
 import com.polystorage.entity.SanPham;
@@ -350,9 +350,9 @@ public class FrameThemSanPham extends javax.swing.JFrame {
     private javax.swing.JTextField txtTenSP;
     // End of variables declaration//GEN-END:variables
     SanPham sp;
-    SanPhamDAOImpl sanPhamDAOImpl = new SanPhamDAOImpl();
-    NhaCungCapDAOImpl nhaCungCapDAOImpl = new NhaCungCapDAOImpl();
-    LoaiSanPhamDAOImpl loaiSanPhamDAOImpl = new LoaiSanPhamDAOImpl();
+    SanPhamDAO sanPhamDAOImpl = new SanPhamDAO();
+    NhaCungCapDAO nhaCungCapDAOImpl = new NhaCungCapDAO();
+    LoaiSanPhamDAO loaiSanPhamDAOImpl = new LoaiSanPhamDAO();
     boolean capNhat = false;
 
     private void showDetailSanPham() {

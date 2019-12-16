@@ -1,6 +1,6 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.NhanVienDAOImpl;
+import com.polystorage.dao.NhanVienDAO;
 import com.polystorage.entity.NhanVien;
 import com.polystorage.helper.DialogHelper;
 import com.polystorage.helper.ProcessImage;
@@ -427,7 +427,7 @@ public class FrameThemNhanVien extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     NhanVien nv;
     String hinh = "unknow.png";
-    NhanVienDAOImpl nhanVienDAOImpl = new NhanVienDAOImpl();
+    NhanVienDAO nhanVienDAOImpl = new NhanVienDAO();
     boolean capNhat = false;
 
     private void updateUI() {

@@ -1,6 +1,6 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.NhaCungCapDAOImpl;
+import com.polystorage.dao.NhaCungCapDAO;
 import com.polystorage.entity.NhaCungCap;
 import com.polystorage.helper.DialogHelper;
 import java.awt.Color;
@@ -329,7 +329,7 @@ public class FrameThemNhaCungCap extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     NhaCungCap nhaCungCap;
     boolean capNhat = false;
-    NhaCungCapDAOImpl nhaCungCapDAOImpl = new NhaCungCapDAOImpl();
+    NhaCungCapDAO nhaCungCapDAOImpl = new NhaCungCapDAO();
     
     private void updateUI() {
         btnCancel.setCursor(new Cursor(Cursor.HAND_CURSOR));

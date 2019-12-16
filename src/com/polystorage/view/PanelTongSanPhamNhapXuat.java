@@ -1,6 +1,6 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.SanPhamDAOImpl;
+import com.polystorage.dao.SanPhamDAO;
 import com.polystorage.entity.ChiTietDonNhap;
 import com.polystorage.entity.ChiTietDonXuat;
 import com.polystorage.entity.SanPham;
@@ -222,7 +222,7 @@ public class PanelTongSanPhamNhapXuat extends javax.swing.JPanel {
     JButton btnUpdate = new JButton();
     List<SanPham> listSP;
     int indexSP = 0;
-    SanPhamDAOImpl sanPhamDAOImpl = new SanPhamDAOImpl();
+    SanPhamDAO sanPhamDAOImpl = new SanPhamDAO();
 
     private void setTableUI() {
         tblSanPhamNhap.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 15));

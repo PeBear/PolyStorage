@@ -5,7 +5,7 @@
  */
 package com.polystorage.view;
 
-import com.polystorage.dao.NhanVienDAOImpl;
+import com.polystorage.dao.NhanVienDAO;
 import com.polystorage.entity.NhanVien;
 import com.polystorage.helper.DialogHelper;
 
@@ -218,7 +218,7 @@ public class JDialogLogin extends javax.swing.JDialog {
     private javax.swing.JTextField txtMaNV;
     private javax.swing.JPasswordField txtMatKhau;
     // End of variables declaration//GEN-END:variables
-    NhanVienDAOImpl nhanVienDAOImpl = new NhanVienDAOImpl();
+    NhanVienDAO nhanVienDAOImpl = new NhanVienDAO();
 
     private boolean checkLogin() {
         String maNV = txtMaNV.getText();

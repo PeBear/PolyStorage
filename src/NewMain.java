@@ -1,6 +1,6 @@
 
-import com.polystorage.dao.DonNhapDAOImpl;
-import com.polystorage.dao.SanPhamDAOImpl;
+import com.polystorage.dao.DonNhapDAO;
+import com.polystorage.dao.SanPhamDAO;
 import com.polystorage.entity.ChiTietDonNhap;
 import com.polystorage.entity.SanPham;
 import com.polystorage.view.PanelDanhSachNhaCungCap;

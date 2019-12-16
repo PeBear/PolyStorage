@@ -6,7 +6,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class KhachHangDAOImpl {
+public class KhachHangDAO {
 
     public List<KhachHang> getListKhachHang(String tenKhachHang) {
         List<KhachHang> list = null;

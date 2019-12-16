@@ -7,7 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class ChiTietDonNhapDAOImpl{
+public class ChiTietDonNhapDAO{
 
     public List<ChiTietDonNhap> getListChiTietDonNhap(int maDN) {
         Session session = HibernateUtil.getSessionFactory().openSession();

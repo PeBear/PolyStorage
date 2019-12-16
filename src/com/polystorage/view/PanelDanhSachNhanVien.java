@@ -1,6 +1,6 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.NhanVienDAOImpl;
+import com.polystorage.dao.NhanVienDAO;
 import com.polystorage.entity.NhanVien;
 import com.polystorage.helper.DialogHelper;
 import com.polystorage.helper.RemoveButton;
@@ -229,7 +229,7 @@ public class PanelDanhSachNhanVien extends javax.swing.JPanel {
 
     List<NhanVien> list;
     int index = 0;
-    NhanVienDAOImpl nhanVienDAOImpl = new NhanVienDAOImpl();
+    NhanVienDAO nhanVienDAOImpl = new NhanVienDAO();
 
     public void fillToTable(String hoten) {
         list = nhanVienDAOImpl.getListNhanVien(hoten);

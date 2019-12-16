@@ -1,12 +1,12 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.ChiTietDonNhapDAOImpl;
-import com.polystorage.dao.ChiTietKhoDAOImpl;
-import com.polystorage.dao.DonNhapDAOImpl;
-import com.polystorage.dao.KhoDAOImpl;
-import com.polystorage.dao.NhaCungCapDAOImpl;
-import com.polystorage.dao.NhanVienDAOImpl;
-import com.polystorage.dao.SanPhamDAOImpl;
+import com.polystorage.dao.ChiTietDonNhapDAO;
+import com.polystorage.dao.ChiTietKhoDAO;
+import com.polystorage.dao.DonNhapDAO;
+import com.polystorage.dao.KhoDAO;
+import com.polystorage.dao.NhaCungCapDAO;
+import com.polystorage.dao.NhanVienDAO;
+import com.polystorage.dao.SanPhamDAO;
 import com.polystorage.entity.ChiTietDonNhap;
 import com.polystorage.entity.ChiTietDonNhapId;
 import com.polystorage.entity.ChiTietKho;
@@ -558,13 +558,13 @@ public class FrameThemDonNhap extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     int maDN;
     DonNhap donNhap;
-    NhaCungCapDAOImpl nhaCungCapDAOImpl = new NhaCungCapDAOImpl();
-    SanPhamDAOImpl sanPhamDAOImpl = new SanPhamDAOImpl();
-    NhanVienDAOImpl nhanVienDAOImpl = new NhanVienDAOImpl();
-    KhoDAOImpl khoDAOImpl = new KhoDAOImpl();
-    ChiTietKhoDAOImpl chiTietKhoDAOImpl = new ChiTietKhoDAOImpl();
-    ChiTietDonNhapDAOImpl chiTietDonNhapDAOImpl = new ChiTietDonNhapDAOImpl();
-    DonNhapDAOImpl donNhapDAOImpl = new DonNhapDAOImpl();
+    NhaCungCapDAO nhaCungCapDAOImpl = new NhaCungCapDAO();
+    SanPhamDAO sanPhamDAOImpl = new SanPhamDAO();
+    NhanVienDAO nhanVienDAOImpl = new NhanVienDAO();
+    KhoDAO khoDAOImpl = new KhoDAO();
+    ChiTietKhoDAO chiTietKhoDAOImpl = new ChiTietKhoDAO();
+    ChiTietDonNhapDAO chiTietDonNhapDAOImpl = new ChiTietDonNhapDAO();
+    DonNhapDAO donNhapDAOImpl = new DonNhapDAO();
 
     List<ChiTietDonNhap> listChiTietDonNhap;
     boolean isAddDonNhap = false; //kiem tra da add don nhap chua

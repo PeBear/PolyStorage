@@ -1,6 +1,6 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.DonXuatDAOImpl;
+import com.polystorage.dao.DonXuatDAO;
 import com.polystorage.entity.DonXuat;
 import com.polystorage.helper.DialogHelper;
 import com.polystorage.helper.ExportPDF;
@@ -307,7 +307,7 @@ public class PanelDanhSachDonXuat extends javax.swing.JPanel {
     List<DonXuat> list;
     int index = 0;
 
-    DonXuatDAOImpl donXuatDAOImpl = new DonXuatDAOImpl();
+    DonXuatDAO donXuatDAOImpl = new DonXuatDAO();
 
     private void setTableUI() {
         tblDonXuat.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 15));

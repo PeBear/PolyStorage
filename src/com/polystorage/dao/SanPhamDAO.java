@@ -1,37 +1,40 @@
 package com.polystorage.dao;
 
-import com.polystorage.entity.Kho;
+import com.polystorage.entity.SanPham;
 import com.polystorage.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class KhoDAOImpl{
+public class SanPhamDAO {
 
-    public List<Kho> getListKho() {
-        List<Kho> list = null;
+    public List<SanPham> getListSanPham(String tensp) {
+        List<SanPham> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        String sql = "from Kho";
+        String sql = "FROM SanPham";
+        if (tensp != null) {
+            sql += " where SanPham like '" + tensp + "%'";
+        }
         Query query = session.createQuery(sql);
         list = query.list();
         session.close();
         return list;
     }
 
-    public Kho getInfoKho(String maKho) {
+    public SanPham getInfoSanPham(String masp) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Kho kho = (Kho) session.get(Kho.class, maKho);
+        SanPham nv = (SanPham) session.get(SanPham.class, masp);
         session.close();
-        return kho;
+        return nv;
     }
 
-    public boolean insertKho(Kho kho) {
+    public boolean insertSanPham(SanPham sp) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.save(kho);
+            session.save(sp);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -43,14 +46,14 @@ public class KhoDAOImpl{
         }
     }
 
-    public boolean updateKho(Kho kho) {
-        if (getInfoKho(kho.getMaKho()) == null) {
+    public boolean updateSanPham(SanPham sp) {
+        if (getInfoSanPham(sp.getMaSp()) == null) {
             return false;
         }
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.update(kho);
+            session.update(sp);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -62,12 +65,12 @@ public class KhoDAOImpl{
         }
     }
 
-    public boolean deleteKho(String maKho) {
-        Kho kho = getInfoKho(maKho);
+    public boolean deleteSanPham(String masp) {
+        SanPham sp = this.getInfoSanPham(masp);
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.delete(kho);
+            session.delete(sp);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {

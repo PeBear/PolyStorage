@@ -1,6 +1,6 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.DonNhapDAOImpl;
+import com.polystorage.dao.DonNhapDAO;
 import com.polystorage.entity.DonNhap;
 import com.polystorage.helper.DialogHelper;
 import com.polystorage.helper.ExportPDF;
@@ -312,7 +312,7 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
     List<DonNhap> list;
     int index = 0;
 
-    DonNhapDAOImpl donNhapDAOImpl = new DonNhapDAOImpl();
+    DonNhapDAO donNhapDAOImpl = new DonNhapDAO();
 
     private void setTableUI() {
         tblDonNhap.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 15));

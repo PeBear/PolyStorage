@@ -1,6 +1,6 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.NhaCungCapDAOImpl;
+import com.polystorage.dao.NhaCungCapDAO;
 import com.polystorage.entity.NhaCungCap;
 import com.polystorage.helper.DialogHelper;
 import com.polystorage.helper.RemoveButton;
@@ -214,7 +214,7 @@ public class PanelDanhSachNhaCungCap extends javax.swing.JPanel {
 
     List<NhaCungCap> list;
     int index = 0;
-    NhaCungCapDAOImpl nhaCungCapDAOImpl = new NhaCungCapDAOImpl();
+    NhaCungCapDAO nhaCungCapDAOImpl = new NhaCungCapDAO();
 
     private void setTableUI() {
         tblNhaCungCap.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 13));

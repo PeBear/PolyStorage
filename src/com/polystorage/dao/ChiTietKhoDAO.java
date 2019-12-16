@@ -16,7 +16,7 @@ import org.hibernate.Session;
  *
  * @author xpeter
  */
-public class ChiTietKhoDAOImpl{
+public class ChiTietKhoDAO{
 
     public List<ChiTietKho> getListChiTietKho(String maKho) {
         List<ChiTietKho> list = null;

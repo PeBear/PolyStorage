@@ -32,7 +32,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         reloadRootPanel(new PanelDanhSachDonNhap(isNhanVien));
         
-        //lblNhanVien.setText(nhanVien.getVaiTro() + ": " + nhanVien.getHoTen());
+        lblNhanVien.setText(nhanVien.getVaiTro() + ": " + nhanVien.getHoTen());
     }
 
     /**
@@ -68,6 +68,7 @@ public class MainFrame extends javax.swing.JFrame {
         pnlRoot = new javax.swing.JPanel();
         pnlLogo = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
+        lblNhanVien = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -324,6 +325,9 @@ public class MainFrame extends javax.swing.JFrame {
         lblLogo.setForeground(new java.awt.Color(255, 255, 255));
         lblLogo.setText("POLY STORAGE");
 
+        lblNhanVien.setFont(new java.awt.Font("Tahoma", 1, 30)); // NOI18N
+        lblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout pnlLogoLayout = new javax.swing.GroupLayout(pnlLogo);
         pnlLogo.setLayout(pnlLogoLayout);
         pnlLogoLayout.setHorizontalGroup(
@@ -331,13 +335,17 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(pnlLogoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pnlLogoLayout.setVerticalGroup(
             pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlLogoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -468,6 +476,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblNhanVien;
     private javax.swing.JPanel pnlDonNhap;
     private javax.swing.JPanel pnlDonXuat;
     private javax.swing.JPanel pnlKhachHang;

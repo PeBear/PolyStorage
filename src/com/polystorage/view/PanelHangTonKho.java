@@ -1,8 +1,8 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.ChiTietKhoDAOImpl;
-import com.polystorage.dao.DonNhapDAOImpl;
-import com.polystorage.dao.KhoDAOImpl;
+import com.polystorage.dao.ChiTietKhoDAO;
+import com.polystorage.dao.DonNhapDAO;
+import com.polystorage.dao.KhoDAO;
 import com.polystorage.entity.ChiTietKho;
 import com.polystorage.entity.DonNhap;
 import com.polystorage.entity.Kho;
@@ -200,8 +200,8 @@ public class PanelHangTonKho extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     List<ChiTietKho> list;
     int index = 0;
-    KhoDAOImpl khoDAOImpl = new KhoDAOImpl();
-    ChiTietKhoDAOImpl chiTietKhoDAOImpl = new ChiTietKhoDAOImpl();
+    KhoDAO khoDAOImpl = new KhoDAO();
+    ChiTietKhoDAO chiTietKhoDAOImpl = new ChiTietKhoDAO();
 
     private void setTableUI() {
         tblTonKho.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 15));

@@ -7,7 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class DonNhapDAOImpl {
+public class DonNhapDAO {
 
     public List<DonNhap> getListDonNhap(int maDN) {
         List<DonNhap> list = null;

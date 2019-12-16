@@ -1,20 +1,20 @@
 package com.polystorage.dao;
 
-import com.polystorage.entity.NhanVien;
+import com.polystorage.entity.LoaiSanPham;
 import com.polystorage.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class NhanVienDAOImpl {
+public class LoaiSanPhamDAO {
 
-    public List<NhanVien> getListNhanVien(String hoten) {
-        List<NhanVien> list = null;
+    public List<LoaiSanPham> getListLoai(String loai) {
+        List<LoaiSanPham> list = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        String sql = "from NhanVien";
-        if (hoten != null) {
-            sql += " where HoTen like '" + hoten + "%'";
+        String sql = "from LoaiSanPham";
+        if (loai != null) {
+            sql += " where Loai like '" + loai + "%'";
         }
         Query query = session.createQuery(sql);
         list = query.list();
@@ -22,19 +22,19 @@ public class NhanVienDAOImpl {
         return list;
     }
 
-    public NhanVien getInfoNhanVien(String manv) {
+    public LoaiSanPham getInfoLoai(String maLoai) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        NhanVien nv = (NhanVien) session.get(NhanVien.class, manv);
+        LoaiSanPham loai = (LoaiSanPham) session.get(LoaiSanPham.class, maLoai);
         session.close();
-        return nv;
+        return loai;
     }
 
-    public boolean insertNhanVien(NhanVien nv) {
+    public boolean insertLoai(LoaiSanPham loai) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.save(nv);
+            session.save(loai);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -46,14 +46,14 @@ public class NhanVienDAOImpl {
         }
     }
 
-    public boolean updateNhanVien(NhanVien nv) {
-        if (getInfoNhanVien(nv.getMaNv()) == null) {
+    public boolean updateLoai(LoaiSanPham loai) {
+        if (getInfoLoai(loai.getMaLoai()) == null) {
             return false;
         }
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.update(nv);
+            session.update(loai);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -65,12 +65,12 @@ public class NhanVienDAOImpl {
         }
     }
 
-    public boolean deleteNhanVien(String manv) {
-        NhanVien nv = getInfoNhanVien(manv);
+    public boolean deleteLoai(String maLoai) {
+        LoaiSanPham loai = getInfoLoai(maLoai);
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
-            session.delete(nv);
+            session.delete(loai);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
@@ -81,4 +81,5 @@ public class NhanVienDAOImpl {
             session.close();
         }
     }
+
 }

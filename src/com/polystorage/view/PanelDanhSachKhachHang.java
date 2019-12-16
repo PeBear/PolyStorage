@@ -1,7 +1,7 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.KhachHangDAOImpl;
-import com.polystorage.dao.NhaCungCapDAOImpl;
+import com.polystorage.dao.KhachHangDAO;
+import com.polystorage.dao.NhaCungCapDAO;
 import com.polystorage.entity.KhachHang;
 import com.polystorage.entity.NhaCungCap;
 import com.polystorage.helper.DialogHelper;
@@ -202,7 +202,7 @@ public class PanelDanhSachKhachHang extends javax.swing.JPanel {
 
     List<KhachHang> list;
     int index = 0;
-    KhachHangDAOImpl khachHangDAOImpl = new KhachHangDAOImpl();
+    KhachHangDAO khachHangDAOImpl = new KhachHangDAO();
 
     private void setTableUI() {
         tblDoiTac.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 13));

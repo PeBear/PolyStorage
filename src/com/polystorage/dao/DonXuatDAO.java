@@ -7,7 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-public class DonXuatDAOImpl{
+public class DonXuatDAO{
 
     public List<DonXuat> getListDonXuat(int maDX) {
         List<DonXuat> list = null;

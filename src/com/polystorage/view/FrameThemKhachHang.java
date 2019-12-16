@@ -1,6 +1,6 @@
 package com.polystorage.view;
 
-import com.polystorage.dao.KhachHangDAOImpl;
+import com.polystorage.dao.KhachHangDAO;
 import com.polystorage.entity.KhachHang;
 import com.polystorage.helper.DialogHelper;
 import java.awt.Color;
@@ -328,7 +328,7 @@ public class FrameThemKhachHang extends javax.swing.JFrame {
     private javax.swing.JTextField txtSDT;
     // End of variables declaration//GEN-END:variables
     KhachHang khachHang;
-    KhachHangDAOImpl khachHangDAOImpl = new KhachHangDAOImpl();
+    KhachHangDAO khachHangDAOImpl = new KhachHangDAO();
     boolean capNhat = false;
     
     private void updateUI() {
