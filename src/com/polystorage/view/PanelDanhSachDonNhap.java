@@ -277,6 +277,7 @@ public class PanelDanhSachDonNhap extends javax.swing.JPanel {
                     ExportPDF exportPDF = new ExportPDF();
                     exportPDF.FILE = path;
                     exportPDF.exportDonNhap(donNhapDAOImpl.getInfoDonNhap(2));
+                    DialogHelper.showMessageDialog(null, "Xuất pdf thành công.");
                 }
 
             }

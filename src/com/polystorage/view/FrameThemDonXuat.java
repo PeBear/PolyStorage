@@ -732,5 +732,6 @@ public class FrameThemDonXuat extends javax.swing.JFrame {
                 DialogHelper.showMessageDialog(this, "Xác nhận đơn hàng thất bại");
             }
         }
+        PanelHangTonKho.reload.fillToTableTonKho(maKho);
     }
 }

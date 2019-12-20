@@ -389,10 +389,6 @@ public class FrameThemKhachHang extends javax.swing.JFrame {
             txtDiaChi.setBackground(Color.yellow);
             txtDiaChi.requestFocus();
             return "Địa chỉ trống.";
-        } else if (!txtDiaChi.getText().matches("[\\p{L} ]+")) {
-            txtDiaChi.setBackground(Color.yellow);
-            txtDiaChi.requestFocus();
-            return "Sai định dạng địa chỉ.";
         }
 
         return "";

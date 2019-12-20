@@ -71,7 +71,7 @@ public class FrameThemNhaCungCap extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 145, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Khách Hàng");
+        jLabel1.setText("Nhà cung cấp");
 
         lblChucNang.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblChucNang.setForeground(new java.awt.Color(0, 145, 255));
@@ -389,10 +389,6 @@ public class FrameThemNhaCungCap extends javax.swing.JFrame {
             txtDiaChi.setBackground(Color.yellow);
             txtDiaChi.requestFocus();
             return "Địa chỉ trống.";
-        } else if (!txtDiaChi.getText().matches("[\\p{L} ]+")) {
-            txtDiaChi.setBackground(Color.yellow);
-            txtDiaChi.requestFocus();
-            return "Sai định dạng địa chỉ.";
         }
 
         return "";

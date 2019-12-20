@@ -144,6 +144,11 @@ public class PanelDanhSachKhachHang extends javax.swing.JPanel {
         tblDoiTac.setSelectionBackground(new java.awt.Color(130, 168, 212));
         tblDoiTac.setShowVerticalLines(false);
         tblDoiTac.getTableHeader().setReorderingAllowed(false);
+        tblDoiTac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDoiTacMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDoiTac);
 
         jPanel9.setBackground(new java.awt.Color(102, 102, 255));
@@ -187,6 +192,15 @@ public class PanelDanhSachKhachHang extends javax.swing.JPanel {
     private void btnThemNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNhanVienActionPerformed
         new FrameThemKhachHang(null).setVisible(true);
     }//GEN-LAST:event_btnThemNhanVienActionPerformed
+
+    private void tblDoiTacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDoiTacMouseClicked
+        if (evt.getClickCount() == 2) {
+            int index = tblDoiTac.getSelectedRow();
+            String maKH = (String) tblDoiTac.getValueAt(index, 0);
+            KhachHang khachHang = khachHangDAOImpl.getInfoKhachHang(maKH);
+            new FrameThemKhachHang(khachHang).setVisible(true);
+        }
+    }//GEN-LAST:event_tblDoiTacMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -239,13 +253,13 @@ public class PanelDanhSachKhachHang extends javax.swing.JPanel {
         } else {
             int index = tblDoiTac.getSelectedRow();
             String maKH = (String) tblDoiTac.getValueAt(index, 0);
-            int ok = JOptionPane.showConfirmDialog(null, "Xác nhận xóa nhà cung cấp " + maKH, "Bạn muốn xóa?", JOptionPane.YES_NO_OPTION);
+            int ok = JOptionPane.showConfirmDialog(null, "Xác nhận xóa khách hàng " + maKH, "Bạn muốn xóa?", JOptionPane.YES_NO_OPTION);
             if (ok == 0) {
                 if (khachHangDAOImpl.deleteKhachHang(maKH)) {
                     PanelDanhSachKhachHang.reload.fillToTable(null);
-                    DialogHelper.showMessageDialog(null, "Xóa nhà cung cấp " + maKH + " thành công");
+                    DialogHelper.showMessageDialog(null, "Xóa khách hàng " + maKH + " thành công");
                 } else {
-                    DialogHelper.showMessageDialog(null, "Xóa nhà cung cấp " + maKH + " thất bại");
+                    DialogHelper.showMessageDialog(null, "Xóa khách hàng " + maKH + " thất bại");
                 }
             }
         }

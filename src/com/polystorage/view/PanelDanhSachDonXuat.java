@@ -282,6 +282,7 @@ public class PanelDanhSachDonXuat extends javax.swing.JPanel {
                     ExportPDF exportPDF = new ExportPDF();
                     exportPDF.FILE = path;
                     exportPDF.exportDonXuat(donXuatDAOImpl.getInfoDonXuat(maDX));
+                    DialogHelper.showMessageDialog(null, "Xuất pdf thành công.");
                 }
             }
         }

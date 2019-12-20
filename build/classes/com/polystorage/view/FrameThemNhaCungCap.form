@@ -106,7 +106,7 @@
               <Color blue="ff" green="91" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Kh&#xe1;ch H&#xe0;ng"/>
+            <Property name="text" type="java.lang.String" value="Nh&#xe0; cung c&#x1ea5;p"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblChucNang">

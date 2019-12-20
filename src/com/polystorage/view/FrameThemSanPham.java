@@ -116,6 +116,11 @@ public class FrameThemSanPham extends javax.swing.JFrame {
         jLabel8.setText("Giá:");
 
         cboNhaCungCap.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        cboNhaCungCap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboNhaCungCapActionPerformed(evt);
+            }
+        });
 
         cboDonViTinh.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
         cboDonViTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thùng", "Chai" }));
@@ -291,6 +296,10 @@ public class FrameThemSanPham extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSaveMouseClicked
 
+    private void cboNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboNhaCungCapActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboNhaCungCapActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -408,23 +417,19 @@ public class FrameThemSanPham extends javax.swing.JFrame {
             txtTenSP.setBackground(Color.yellow);
             txtTenSP.requestFocus();
             return "Tên sản phẩm trống.";
-        } else if (!txtTenSP.getText().matches("[\\p{L} ]+")) {
-            txtTenSP.setBackground(Color.yellow);
-            txtTenSP.requestFocus();
-            return "Sai định dạng tên sản phẩm.";
         }
 
-        if (txtTenSP.getText().isEmpty()) {
-            txtTenSP.setBackground(Color.yellow);
-            txtTenSP.requestFocus();
-            return "Tên sản phẩm trống.";
+        if (txtGia.getText().isEmpty()) {
+            txtGia.setBackground(Color.yellow);
+            txtGia.requestFocus();
+            return "Gía tiền trống.";
         } else {
             try {
-                Float.valueOf(txtTenSP.getText());
+                Float.valueOf(txtGia.getText());
             } catch (Exception e) {
-                txtTenSP.setBackground(Color.yellow);
-                txtTenSP.requestFocus();
-                return "Sai định dạng sản phẩm.";
+                txtGia.setBackground(Color.yellow);
+                txtGia.requestFocus();
+                return "Sai định dạng giá.";
             }
         }
 
@@ -435,17 +440,19 @@ public class FrameThemSanPham extends javax.swing.JFrame {
         txtMaSP.setBackground(Color.white);
         txtTenSP.setBackground(Color.white);
         txtGia.setBackground(Color.white);
-        cboNhaCungCap.setSelectedIndex(0);
-        cboDonViTinh.setSelectedIndex(0);
-        cboLoai.setSelectedIndex(0);
+//        cboNhaCungCap.setSelectedIndex(0);
+//        cboDonViTinh.setSelectedIndex(0);
+//        cboLoai.setSelectedIndex(0);
     }
 
     private SanPham getModel() {
         String maSP = txtMaSP.getText();
         String tenSP = txtTenSP.getText();
         float giaSP = Float.parseFloat(txtGia.getText());
-        String maNCC = (String) cboNhaCungCap.getSelectedItem();
+        String maNCC = cboNhaCungCap.getSelectedItem().toString();
+        System.out.println(maNCC);
         NhaCungCap nhaCungCap = nhaCungCapDAOImpl.getInfoNhaCungCap(maNCC.substring(1, maNCC.lastIndexOf(")")));
+        System.out.println(maNCC.substring(1, maNCC.lastIndexOf(")")));
         String maLoai = (String) cboLoai.getSelectedItem();
         LoaiSanPham loaiSanPham = loaiSanPhamDAOImpl.getInfoLoai(maLoai.substring(1, maLoai.lastIndexOf(")")));
         String donViTinh = (String) cboDonViTinh.getSelectedItem();

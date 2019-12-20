@@ -223,7 +223,7 @@ public class JDialogChao extends javax.swing.JDialog {
                     phantram.setText("Loading : "+value+"%");
                    
                     try {
-                        Thread.sleep(50);
+                        Thread.sleep(70);
 
                     } catch (InterruptedException ex) {
 
